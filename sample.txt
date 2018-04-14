@@ -1,0 +1,6 @@
+Apple - a fruit, a tech firm
+Table - an object, two dimensional unit consists of rows and columns
+Block - solid piece of hard material, junction of four streets, jam
+Orange - a fruit
+Turkey - a big bird, country
+
