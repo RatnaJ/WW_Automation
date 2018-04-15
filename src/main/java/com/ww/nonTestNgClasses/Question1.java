@@ -10,6 +10,7 @@ import java.util.List;
 public class Question1 {
 
     public static List<String> outputList = new LinkedList<String>();
+    static String[] st1;
 
     public static void main(String[] args) {
         doesFileExist("sample.txt");
@@ -66,47 +67,35 @@ public class Question1 {
     /**
      * Approach followed:
      * 1. passing the each line as a main string to this method
-     * 2. finding the index value of the delimiters (- ,)
-     * 3. based on the index values of delimiters, getting the stream of chars between the delimiters as substrings
-     * 4. Every time the substring is fetched from the main string, adding it to the LinkedList
-     * 5. finally printing the output list values
+     * 2. Used split method to split the line into array of strings based on the delimiters [-,]
+     * 3. fetched strings from the array and add them to the LinkedList
+     * 5. Return the list t the calling method
      *
      * Cases: tested lines with possible dictionary patterns
      * 1. string with one "-" and no ","
      * 2. string with one "-" and one ","
      * 3. string with one "-" and two ","
+     * 4. duplicate strings
      *
      * @param string
      * @return
      */
     public static List<String> parseString(String string) {
-        String string1 = "";
-        int cIndex = 0;
-        int nIndex = 0;
-        boolean hyphenCheck = false;
+        if (string.length() > 0) {
+            st1 = string.split("[-,]");
 
-        if (string.length() > 0)
-            while (nIndex >= 0) {
-                if (hyphenCheck == false) { //This condition is to check for the first "-"
-                    nIndex = string.indexOf("-");
-                    hyphenCheck = true;
-                }
 
-                string1 = string.substring(cIndex, nIndex);
-                outputList.add(string1);
-                cIndex = nIndex + 1;
-                nIndex = string.indexOf(",", cIndex);
-                //commaCount++;
-
-                if (nIndex < 0) { //If there are no more commas found in the main string, get the remaining string of chars after the last ","
-                    string1 = string.substring(cIndex);
-                    outputList.add(string1);
-
-                }
-
+            for (String string1 : st1
+                    ) {
+                outputList.add(string1.trim());
             }
+        }
+
         return outputList;
     }
+
+
+
 
 }
 
